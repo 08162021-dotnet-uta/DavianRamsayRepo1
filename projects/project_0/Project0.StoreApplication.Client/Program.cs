@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Project0.StoreApplication.Domain.Abstracts;
+using System;
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Repositories;
+using Serilog;
+
 
 namespace Project0.StoreApplication.Client
 {
@@ -9,6 +12,10 @@ namespace Project0.StoreApplication.Client
   {
     static void Main(string[] args)
     {
+      Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+
+
+
       var p = new Program();
 
       p.PrintAllStoreLocations();
@@ -18,6 +25,14 @@ namespace Project0.StoreApplication.Client
 
     void PrintAllStoreLocations()
     {
+      //Levels of monitoring we can do are: 
+      //Verbose
+      //Debug
+      //Information
+      //Warning
+      //Error
+      //Fatal
+      Log.Information("in PrintAllstoreLocations Method");
       var storeRepository = new StoreRepository();
       int i = 1;
 
@@ -30,6 +45,8 @@ namespace Project0.StoreApplication.Client
 
     Store SelectAStore()
     {
+
+      Log.Information("In SelectAStore method");
       var sr = new StoreRepository().Stores;
 
       Console.WriteLine("Select a Store: ");
@@ -39,5 +56,6 @@ namespace Project0.StoreApplication.Client
 
       return store;
     }
+
   }
 }
