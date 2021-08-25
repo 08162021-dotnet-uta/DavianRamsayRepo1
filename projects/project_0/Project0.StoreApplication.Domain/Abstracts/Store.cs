@@ -14,6 +14,5 @@ namespace Project0.StoreApplication.Domain.Abstracts
     {
       return Name;
     }
-
   }
 }

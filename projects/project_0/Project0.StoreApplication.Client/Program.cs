@@ -53,9 +53,32 @@ namespace Project0.StoreApplication.Client
 
       var option = int.Parse(Console.ReadLine());
       var store = sr[option - 1];
+      
+      
+      
+      
+      if (option == 1)
+       {
+         
+         OnlineStore ol = new OnlineStore();
+         String prods;
+         
+         Console.WriteLine(prods = ol.Products());}
 
-      return store;
+       else if (option ==2)
+       {Console.WriteLine(store);}
+       else if (option==3)
+       {Console.WriteLine(store);}
+       else
+         {Console.WriteLine("Please select a valid option");}
+       
+       //Console.WriteLine("You have Selected: ");
+
+       return store;
+       
+       
     }
 
+   
   }
 }
