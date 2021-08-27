@@ -1,59 +1,58 @@
-using Project0.StoreApplication.Domain.Abstracts;
 using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Adapters;
+using Project0.StoreApplication.Domain.IRepository;
 
 
 namespace Project0.StoreApplication.Storage.Repositories
 {
 
-  public class StoreRepository
+  public class StoreRepository : IRepository<Store>
   {
+    private const string _path = @"/home/davian/revature/davian_repo/data/Store.xml";
+    private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
-    public List<Store> Stores { get; set; }
+    //public List<Store> Stores
+    //{ get; set; }
 
     public StoreRepository()
     {
 
-      var fileAdapter = new FileAdapter();
-
-      fileAdapter.WriteToFile(new List<Store>()
-         {
-         new GroceryStore(),
-         new AthleticStore(),
-         new OnlineStore()
-         });
-
-      /*  if (fileAdapter.ReadFromFile() == null)
-       {
-         fileAdapter.WriteToFile(new List<Store>()
-          {
-          new GroceryStore(),
-          new AthleticStore(),
-          new OnlineStore()
-          });
-       } */
-      Stores = fileAdapter.ReadFromFile();
+      if (_fileAdapter.ReadFromFile<Store>(_path) == null)
       {
+        _fileAdapter.WriteToFile<Store>(_path, new List<Store>()
+      {
+        new Store(){Name = "Grocery Store"},
+        new Store(){Name = "Athletic Store"},
+        new Store(){Name = "Online Store"}
 
-      };
+    });
+
+      }
+    }
+    public bool Insert(List<Store> entry)
+    {
+      _fileAdapter.WriteToFile<Store>(_path, entry);
+      return true;
     }
 
-    /*  public Store GetStore(int index)
-     {
-       try
-       {
+    public Store Update()
+    {
+      throw new System.NotImplementedException();
+    }
 
-         return Stores[index];
+    public List<Store> Select()
+    {
+      return _fileAdapter.ReadFromFile<Store>(_path);
+    }
 
-       }
-       catch
-       {
-         return null;
+    public bool Delete()
+    {
+      throw new System.NotImplementedException();
+    }
 
-       }
 
-     } */
+
   }
-}
 
+}

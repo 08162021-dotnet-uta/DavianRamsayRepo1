@@ -1,7 +1,7 @@
 namespace Project0.StoreApplication.Domain.Models
 {
 
-  public class Customer
+  public class Store
   {
     public string Name { get; set; }
     public override string ToString()
