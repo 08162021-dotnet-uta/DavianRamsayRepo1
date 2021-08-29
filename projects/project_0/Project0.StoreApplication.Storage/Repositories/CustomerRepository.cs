@@ -22,9 +22,9 @@ namespace Project0.StoreApplication.Storage.Repositories
       {
         _fileAdapter.WriteToFile<Customer>(_path, new List<Customer>()
           {
-          new Customer(){Name = "Damian"},
-          new Customer(){Name = "Damian2"},
-          new Customer(){Name = "Damian3"}
+          new Customer(){Name = "Davian1"},
+          new Customer(){Name = "Davian2"},
+          new Customer(){Name = "Davian3"}
           });
       }
       //Stores = fileAdapter.ReadFromFile();

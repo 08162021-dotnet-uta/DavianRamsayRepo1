@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Product>
-    <Name>Bags</Name>
+    <Name>Bags: </Name>
+    <Price>5.5</Price>
   </Product>
   <Product>
-    <Name>Oatmeal</Name>
+    <Name>Oatmeal: </Name>
+    <Price>10.5</Price>
   </Product>
   <Product>
-    <Name>Snickers</Name>
+    <Name>Snickers: </Name>
+    <Price>20.5</Price>
   </Product>
 </ArrayOfProduct>

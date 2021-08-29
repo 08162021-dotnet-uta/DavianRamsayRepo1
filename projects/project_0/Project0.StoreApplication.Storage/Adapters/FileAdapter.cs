@@ -1,7 +1,8 @@
 using System.Xml.Serialization;
-using Project0.StoreApplication.Domain.Models;
 using System.IO;
 using System.Collections.Generic;
+
+
 namespace Project0.StoreApplication.Storage.Adapters
 {
 
@@ -9,6 +10,8 @@ namespace Project0.StoreApplication.Storage.Adapters
 
   public class FileAdapter
   {
+
+
     public List<T> ReadFromFile<T>(string path) where T : class
     {
       if (!File.Exists(path))
@@ -34,8 +37,6 @@ namespace Project0.StoreApplication.Storage.Adapters
       xml.Serialize(file, data);
 
     }
-
-
   }
 
 }
