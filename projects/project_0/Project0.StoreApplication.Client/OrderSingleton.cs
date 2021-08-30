@@ -1,6 +1,8 @@
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Repositories;
 
+
+
 namespace Project0.StoreApplication.Client.Singletons
 {
   public class OrderSingleton

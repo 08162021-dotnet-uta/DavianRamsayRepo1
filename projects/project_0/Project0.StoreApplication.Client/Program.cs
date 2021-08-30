@@ -4,6 +4,7 @@ using Project0.StoreApplication.Domain.Models;
 using Serilog;
 using Project0.StoreApplication.Client.Singletons;
 using System;
+using Project0.StoreApplication.Client;
 //using Project0.StoreApplication.Storage.Adapters;
 
 
@@ -25,6 +26,8 @@ namespace Project0.StoreApplication.Client
 
     private static OrderSingleton _orderSing = OrderSingleton.Instance;
 
+    //private const string _filepath = @"/home/davian/revature/davian_repo/data/logs.txt";
+
 
     // private Product tempProduct;  //
     // private Store tempStore;   //
@@ -33,7 +36,8 @@ namespace Project0.StoreApplication.Client
 
     static void Main(string[] args)
     {
-      Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+      //Log.Logger = new LoggerConfiguration().WriteTo.File(_filepath).CreateLogger();
+
 
 
 
@@ -44,6 +48,8 @@ namespace Project0.StoreApplication.Client
     }
     static void Run()
     {
+
+      // Log.Information("Run Method");
       //ViewCustomers();
       //ViewStores();
       //ViewProducts();
