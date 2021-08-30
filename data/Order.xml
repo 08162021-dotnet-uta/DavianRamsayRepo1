@@ -72,4 +72,22 @@
       <Price>20.5</Price>
     </Product>
   </Order>
+  <Order>
+    <Store>
+      <Location>Fort Lauderdale</Location>
+    </Store>
+    <Product>
+      <Name>Bags: </Name>
+      <Price>5.5</Price>
+    </Product>
+  </Order>
+  <Order>
+    <Store>
+      <Location>Fort Lauderdale</Location>
+    </Store>
+    <Product>
+      <Name>Snickers: </Name>
+      <Price>20.5</Price>
+    </Product>
+  </Order>
 </ArrayOfOrder>
