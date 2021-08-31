@@ -2,24 +2,6 @@
 <ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Order>
     <Store>
-      <Location>Calvery</Location>
-    </Store>
-    <Product>
-      <Name>Bags: </Name>
-      <Price>5.5</Price>
-    </Product>
-  </Order>
-  <Order>
-    <Store>
-      <Location>Virginia</Location>
-    </Store>
-    <Product>
-      <Name>Oatmeal: </Name>
-      <Price>10.5</Price>
-    </Product>
-  </Order>
-  <Order>
-    <Store>
       <Location>Tennessee</Location>
     </Store>
     <Product>

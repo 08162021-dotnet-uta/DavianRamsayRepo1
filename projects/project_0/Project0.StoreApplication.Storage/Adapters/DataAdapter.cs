@@ -18,7 +18,7 @@
 //     protected override void OnConfiguring(DbContextOptionsBuilder builder)
 //     {
 //       //Truscted_Connection=True
-//       builder.UsecdSqlServer("server=(localdb)\\MSSQLLocalDB; database=StoreApplicationDb; Truscted_Connection=True ");
+//       builder.UsedSqlServer("server=(localdb)\\MSSQLLocalDB; database=StoreApplicationDb; Truscted_Connection=True ");
 //     }
 
 

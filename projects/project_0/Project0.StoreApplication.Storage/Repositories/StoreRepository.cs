@@ -22,7 +22,7 @@ namespace Project0.StoreApplication.Storage.Repositories
       {
         _fileAdapter.WriteToFile<Store>(_path, new List<Store>()
       {
-        new Store(){Location = "Fort Lauderdale"},
+        new Store(){Location = "Calvery"},
         new Store(){Location = "Virginia"},
         new Store(){Location = "Tennessee"}
 

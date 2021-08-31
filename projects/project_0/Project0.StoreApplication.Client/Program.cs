@@ -1,13 +1,9 @@
-﻿//using Project0.StoreApplication.Domain.Abstracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Models;
 using Serilog;
 using Project0.StoreApplication.Client.Singletons;
 using System;
-using Project0.StoreApplication.Client;
-//using Project0.StoreApplication.Storage.Adapters;
-
-
+using Project0.StoreApplication.Storage.Adapters;
 
 namespace Project0.StoreApplication.Client
 {
@@ -26,20 +22,21 @@ namespace Project0.StoreApplication.Client
 
     private static OrderSingleton _orderSing = OrderSingleton.Instance;
 
-    //private const string _filepath = @"/home/davian/revature/davian_repo/data/logs.txt";
+    private const string _filepath = @"/home/davian/revature/davian_repo/data/logs.txt";
+
+    //static I want it to be able to be available at compile time and have access to it for the lifetime of our code 
+    private static string genericPath = @"/home/davian/revature/davian_repo/data/";
+    private static readonly FileAdapter _fileAdapter = new FileAdapter();
 
 
-    // private Product tempProduct;  //
-    // private Store tempStore;   //
+    //private Product tempProduct;  // selecting product list 
+    // private Store tempStore;   // selecting store from your store list
 
 
 
     static void Main(string[] args)
     {
-      //Log.Logger = new LoggerConfiguration().WriteTo.File(_filepath).CreateLogger();
-
-
-
+      Log.Logger = new LoggerConfiguration().WriteTo.File(_filepath).CreateLogger();
 
 
       Run();
@@ -49,37 +46,55 @@ namespace Project0.StoreApplication.Client
     static void Run()
     {
 
-      // Log.Information("Run Method");
-      //ViewCustomers();
-      //ViewStores();
-      //ViewProducts();
+      //utilizing logs to know when the run method is being used by the application
+      Log.Information("Initiated Run Method");
 
-      // Console.WriteLine("Welcome Valued Customer!");
-      //       Console.WriteLine("Your previous purchase are listed below.");
-      //       PrintAllOrders();
-      //       
-      //       var tempStore = SelectStore();
-      //      
-      //       var tempProduct = SelectProduct();
-      //     
-      //       Console.WriteLine("The Selected Store is : " + tempStore);
-      //      
-      //       Console.WriteLine("The selected product is : " + tempProduct);
-      //       
 
       Console.WriteLine("Orders below");
       PrintAllOrder();
+
+
       var tempStore = SelectStore();
+
       var tempProduct = SelectProduct();
+
 
       Console.WriteLine("The selected Store: " + tempStore);
 
       Console.WriteLine("The Selected Product: " + tempProduct);
-      _orderSing.AddToOrderRepository(tempStore, tempProduct);
 
-      // Console.WriteLine(SelectStore());
+      Console.WriteLine("\n\n Do you want to see the purchases for the: " + tempStore + " Store?");
+
+      if (Confirmation())
+      {
+        output(GetOrdersFromStore(tempStore));
+      }
+
+      else
+      {
+        //Console.Write("You selected not to see your purchases");
+      }
+
+
+
+      Console.WriteLine("Do you want to confirm this purchase?");
+
+
+
+
+      if (Confirmation())
+      {
+        var tempOrder = new Order() { Store = tempStore, Product = tempProduct };
+        _orderSing.AddToOrderRepository(tempStore, tempProduct);
+        AddOrdertoStore(tempStore, tempOrder);
+      }
+      else
+      {
+
+      }
 
     }
+
 
     private static void PrintAllOrder()
     {
@@ -90,6 +105,13 @@ namespace Project0.StoreApplication.Client
         Console.WriteLine(count + "__" + o);
       }
     }
+
+
+
+
+
+    // All the methods implemented in the run
+
 
 
     //implementing generics for a list of items
@@ -144,8 +166,63 @@ namespace Project0.StoreApplication.Client
       return null;
     }
 
+    /// <summary>
+    /// This method takes 2 permeters Store and Order. This method stores the orders to the location of the stores and s
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="o"></param>
+    static void AddOrdertoStore(Store s, Order o)
+    {
+      string ThePath = genericPath + s.Location + ".xml";
+      List<Order> tempOrder;
+      if (_fileAdapter.ReadFromFile<Order>(ThePath) == null)
+      {
+        _fileAdapter.WriteToFile<Order>(ThePath, new List<Order>());
+      }
+      else
+      {
+        tempOrder = _fileAdapter.ReadFromFile<Order>(ThePath);
+        tempOrder.Add(o);
+        _fileAdapter.WriteToFile<Order>(ThePath, tempOrder);
+      }
+
+
+
+    }
+
+
+    /// <summary>
+    /// this method has a parameter of Store, and returns a list of orders. 
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    static List<Order> GetOrdersFromStore(Store s)
+    {
+      string ThePath = genericPath + s.Location + ".xml";
+
+      return _fileAdapter.ReadFromFile<Order>(ThePath);
+    }
+
+
+
+    static bool Confirmation()
+    {
+      Console.WriteLine("Y/N");
+      if (Console.ReadLine() == "Y")
+      {
+        return true;
+      }
+      else
+        return false;
+
+    }
+
 
   }
+
+
+
+
 
 
 
