@@ -100,6 +100,7 @@ namespace Project0.StoreApplication.Client
 
           if (Confirmation())
           {
+            Log.Information("Order Confirmed");
             var tempOrder = new Order() { Store = tempStore, Product = tempProduct };
             _orderSing.AddToOrderRepository(tempStore, tempProduct);
             AddOrdertoStore(tempStore, tempOrder);
@@ -135,6 +136,7 @@ namespace Project0.StoreApplication.Client
 
     private static void PrintAllOrder()
     {
+      Log.Information("PrintAllOrders Methods");
       int count = 0;
       foreach (var o in _orderSing.getRepo().GetOrders())
       {
