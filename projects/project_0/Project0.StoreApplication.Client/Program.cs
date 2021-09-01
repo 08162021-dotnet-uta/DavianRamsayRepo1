@@ -4,16 +4,14 @@ using Serilog;
 using Project0.StoreApplication.Client.Singletons;
 using System;
 using Project0.StoreApplication.Storage.Adapters;
+using Project0.StoreApplication.Storage;
 
 namespace Project0.StoreApplication.Client
 {
   class Program
   {
-    // private const string path = @"/home/davian/revature/davian_repo/data/Logs";
-    //private const string _path = @"/home/davian/revature/davian_repo/data/Store.xml";
-    //private static readonly FileAdapter fileAdapter = new FileAdapter();
 
-
+    // Declaring instance variables 
     private static readonly CustomerSingleton _custSing = CustomerSingleton.Instance;
 
     private static readonly StoreSingleton _storeSing = StoreSingleton.Instance;
@@ -22,15 +20,13 @@ namespace Project0.StoreApplication.Client
 
     private static OrderSingleton _orderSing = OrderSingleton.Instance;
 
+    //Declaring file paths 
     private const string _filepath = @"/home/davian/revature/davian_repo/data/logs.txt";
 
     //static I want it to be able to be available at compile time and have access to it for the lifetime of our code 
     private static string genericPath = @"/home/davian/revature/davian_repo/data/";
+    DateTime localDate = DateTime.Now;
     private static readonly FileAdapter _fileAdapter = new FileAdapter();
-
-
-    //private Product tempProduct;  // selecting product list 
-    // private Store tempStore;   // selecting store from your store list
 
 
 
@@ -43,6 +39,8 @@ namespace Project0.StoreApplication.Client
 
 
     }
+
+
     static void Run()
     {
 
@@ -50,51 +48,90 @@ namespace Project0.StoreApplication.Client
       Log.Information("Initiated Run Method");
 
 
-      Console.WriteLine("Orders below");
-      PrintAllOrder();
+      // DataAdapter();
 
+      Console.WriteLine("Press '1' to sign in as a Store Manager and '2' as Customer");
+      int signIn = int.Parse(Console.ReadLine());
 
-      var tempStore = SelectStore();
-
-      var tempProduct = SelectProduct();
-
-
-      Console.WriteLine("The selected Store: " + tempStore);
-
-      Console.WriteLine("The Selected Product: " + tempProduct);
-
-      Console.WriteLine("\n\n Do you want to see the purchases for the: " + tempStore + " Store?");
-
-      if (Confirmation())
+      if (signIn == 1)
       {
-        output(GetOrdersFromStore(tempStore));
-      }
-
-      else
-      {
-        //Console.Write("You selected not to see your purchases");
-      }
-
-
-
-      Console.WriteLine("Do you want to confirm this purchase?");
-
-
-
-
-      if (Confirmation())
-      {
-        var tempOrder = new Order() { Store = tempStore, Product = tempProduct };
-        _orderSing.AddToOrderRepository(tempStore, tempProduct);
-        AddOrdertoStore(tempStore, tempOrder);
-      }
-      else
-      {
+        Console.WriteLine("Welcome Store Manager! Please see all Recent orders and Locations below \n");
+        PrintAllOrder();
 
       }
+      else if (signIn == 2)
+      {
+        Console.WriteLine("Would you like to see your past purchases? Press '1' for YES and '2' for NO");
+        int sel = int.Parse(Console.ReadLine());
 
+        if (sel == 1)
+        {
+          Console.WriteLine("Orders below");
+          PrintAllOrder();
+        }
+
+        else if (sel == 2)
+        {
+          var tempStore = SelectStore();
+          var tempProduct = SelectProduct();
+
+          Console.WriteLine("The selected Store: " + tempStore);
+
+          Console.WriteLine("The Selected Product: " + tempProduct);
+
+          Console.WriteLine("\n\n Do you want to see the purchases for the: " + tempStore + " Store?");
+
+          if (Confirmation())
+          {
+            output(GetOrdersFromStore(tempStore));
+          }
+
+          else
+          {
+            //Console.Write("You selected not to see your purchases");
+          }
+
+
+
+          Console.WriteLine("Do you want to confirm this purchase?");
+
+
+
+
+          if (Confirmation())
+          {
+            var tempOrder = new Order() { Store = tempStore, Product = tempProduct };
+            _orderSing.AddToOrderRepository(tempStore, tempProduct);
+            AddOrdertoStore(tempStore, tempOrder);
+          }
+          else
+          {
+
+          }
+        }
+        else { Console.WriteLine("INVALID SELECTION"); }
+
+      }
+      else { Console.WriteLine("INVALID SELECTION"); }
     }
 
+
+
+
+
+
+
+
+
+
+
+    // All the methods implemented in the run
+
+    /// <summary>
+    /// this method has no parameter and print all the orders of the stores
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
 
     private static void PrintAllOrder()
     {
@@ -106,14 +143,11 @@ namespace Project0.StoreApplication.Client
       }
     }
 
-
-
-
-
-    // All the methods implemented in the run
-
-
-
+    /// <summary>
+    /// this generic method provides a list of items 
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
     //implementing generics for a list of items
     private static void output<T>(List<T> data)
     {
@@ -126,6 +160,12 @@ namespace Project0.StoreApplication.Client
 
       }
     }
+
+    /// <summary>
+    /// this method has no parameter and select the List of Store Locations throught the store singleton. 
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
 
     static Store SelectStore()
     {
@@ -144,7 +184,13 @@ namespace Project0.StoreApplication.Client
     }
 
 
+    /// <summary>
+    /// this method has no parameter and select the products throught the product singleton. 
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
 
+    //Getting a list of products through the products singleton
     static Product SelectProduct()
     {
       var d = _productSing.Product;
@@ -155,6 +201,13 @@ namespace Project0.StoreApplication.Client
 
       return ret;
     }
+
+
+    /// <summary>
+    /// this method has no parameter and retrieves customer throught the singleton and receives the a generic output. 
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
 
     static Customer SelectCustomer()
     {
@@ -167,7 +220,7 @@ namespace Project0.StoreApplication.Client
     }
 
     /// <summary>
-    /// This method takes 2 permeters Store and Order. This method stores the orders to the location of the stores and s
+    /// This method takes 2 parameters Store and Order. This method stores the orders to the location of the stores and s
     /// </summary>
     /// <param name="s"></param>
     /// <param name="o"></param>
@@ -186,10 +239,7 @@ namespace Project0.StoreApplication.Client
         _fileAdapter.WriteToFile<Order>(ThePath, tempOrder);
       }
 
-
-
     }
-
 
     /// <summary>
     /// this method has a parameter of Store, and returns a list of orders. 
@@ -203,8 +253,11 @@ namespace Project0.StoreApplication.Client
       return _fileAdapter.ReadFromFile<Order>(ThePath);
     }
 
-
-
+    /// <summary>
+    /// this method no parameteres and is used for a confirmation. 
+    /// </summary>
+    /// <param ></param>
+    /// <returns></returns>
     static bool Confirmation()
     {
       Console.WriteLine("Y/N");
@@ -217,133 +270,24 @@ namespace Project0.StoreApplication.Client
 
     }
 
+    /// <summary>
+    /// this method no parameters and is used to communicate with the database. 
+    /// </summary>
+    /// <param></param>
+    /// <returns></returns>
 
+    private static void DataAdapter()
+    {
+      var def = new DemoEF();
+
+      // def.SetCustomer(new Customer());
+
+      foreach (var item in def.GetCustomers())
+      {
+        Console.WriteLine(item);
+      }
+    }
   }
 
 
-
-
-
-
-
-
-  //  if (selected == 1)
-  //       {
-  //         Console.WriteLine("Here are your products for the: " + ret);
-  //         Console.WriteLine(SelectProduct());
-  //         Log.Information("Logging");
-
-  //       }
-  //       else if (selected == 2)
-  //       { Console.WriteLine("Here are your products for the: " + ret); }
-
-  //       else if (selected == 3)
-  //       { Console.WriteLine("Here are your products for the: " + ret); }
-  //       else
-  //       {
-  //         Console.WriteLine("invalid selection");
-
-  //       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // void PrintAllStoreLocations()
-  // {
-  //   Levels of monitoring we can do are: 
-  //   Verbose
-  //   Debug
-  //   Information
-  //   Warning
-  //   Error
-  //   Fatal
-  //   Log.Information("in PrintAllstoreLocations Method");
-  //   var storeRepository = new StoreRepository();
-  //   int i = 1;
-
-  //   foreach (var store in storeRepository.Stores)
-  //   {
-  //     System.Console.WriteLine(i + " - " + store);
-  //     i += 1;
-  //   }
-  // }
-
-  // Store SelectAStore()
-  // {
-
-  //   Log.Information("In SelectAStore method");
-  //   var sr = new StoreRepository().Stores;
-
-  //   Console.WriteLine("Select a Store: ");
-
-  //   var option = int.Parse(Console.ReadLine());
-  //   var store = sr[option - 1];
-
-
-
-
-  //   if (option == 1)
-  //   {
-
-  //     OnlineStore ol = new OnlineStore();
-  //     String prods = ol.Products();
-
-  //     Console.WriteLine(prods);
-  //   }
-
-  //   else if (option == 2)
-  //   { Console.WriteLine(store); }
-  //   else if (option == 3)
-  //   { Console.WriteLine(store); }
-  //   else
-  //   { Console.WriteLine("Please select a valid option"); }
-
-  //   //Console.WriteLine("You have Selected: ");
-
-  //   return null;
-
-
-  // }
-
-
-  // static void ViewCustomers()
-  //     {
-  //       foreach (var cust in _custSing.Customer)
-  //       {
-  //         System.Console.WriteLine(cust);
-  //       }
-
-  //     }
-  //     static void ViewStores()
-  //     {
-  //       foreach (var store in _storeSing.Store)
-  //       {
-  //         System.Console.WriteLine(store);
-  //       }
-  //     }
-
-  //     static void ViewProducts()
-  //     {
-  //       foreach (var product in _productSing.Product)
-  //       {
-  //         System.Console.WriteLine(product);
-  //       }
-  //     }
-
-
-
-
 }
-

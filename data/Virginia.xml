@@ -9,4 +9,13 @@
       <Price>10.5</Price>
     </Product>
   </Order>
+  <Order>
+    <Store>
+      <Location>Virginia</Location>
+    </Store>
+    <Product>
+      <Name>Snickers: </Name>
+      <Price>20.5</Price>
+    </Product>
+  </Order>
 </ArrayOfOrder>
