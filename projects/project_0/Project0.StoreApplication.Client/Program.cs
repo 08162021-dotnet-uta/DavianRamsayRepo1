@@ -50,18 +50,23 @@ namespace Project0.StoreApplication.Client
 
       // DataAdapter();
 
-      Console.WriteLine("Press '1' to sign in as a Store Manager and '2' as Customer");
-      int signIn = int.Parse(Console.ReadLine());
 
-      if (signIn == 1)
+      int signIn;
+      do
       {
-        Console.WriteLine("Welcome Store Manager! Please see all Recent orders and Locations below \n");
-        PrintAllOrder();
+        Console.WriteLine("\n\nPress '1' to sign in as a Store Manager and '2' as Customer");
+        signIn = int.Parse(Console.ReadLine());
 
-      }
-      else if (signIn == 2)
+        if (signIn == 1)
+        {
+          Console.WriteLine("Welcome Store Manager! Please see all Recent orders and Locations below \n");
+          PrintAllOrder();
+        }
+      } while (signIn == 1);
+
+      if (signIn == 2)
       {
-        Console.WriteLine("Would you like to see your past purchases? Press '1' for YES and '2' for NO");
+        Console.WriteLine("\n\nWelcome Customer!\n\n\n Would you like to see your past purchases? Press '1' for YES and '2' for NO");
         int sel = int.Parse(Console.ReadLine());
 
         if (sel == 1)
@@ -79,7 +84,7 @@ namespace Project0.StoreApplication.Client
 
           Console.WriteLine("The Selected Product: " + tempProduct);
 
-          Console.WriteLine("\n\n Do you want to see the purchases for the: " + tempStore + " Store?");
+          Console.WriteLine("\n\n Do you want to see you past purchases for the: " + tempStore + " Store?");
 
           if (Confirmation())
           {
@@ -98,6 +103,7 @@ namespace Project0.StoreApplication.Client
 
 
 
+
           if (Confirmation())
           {
             Log.Information("Order Confirmed");
@@ -107,7 +113,7 @@ namespace Project0.StoreApplication.Client
           }
           else
           {
-
+            Console.WriteLine("Thank you for Visiting, Goodbye...");
           }
         }
         else { Console.WriteLine("INVALID SELECTION"); }
@@ -115,12 +121,6 @@ namespace Project0.StoreApplication.Client
       }
       else { Console.WriteLine("INVALID SELECTION"); }
     }
-
-
-
-
-
-
 
 
 
@@ -173,7 +173,7 @@ namespace Project0.StoreApplication.Client
     {
       var d = _storeSing.Store;
       output(d);
-      Console.WriteLine("Please select a Location");
+      Console.WriteLine("\n\nPlease select a Location");
 
       var selected = int.Parse(Console.ReadLine());
 
