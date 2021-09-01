@@ -1,7 +1,6 @@
 using Xunit;
 using Project0.StoreApplication.Client.Singletons;
-
-
+using Project0.StoreApplication.Domain.Models;
 
 namespace Project0.StoreApplication.Testing.SingletonTesting
 {
@@ -22,6 +21,12 @@ namespace Project0.StoreApplication.Testing.SingletonTesting
       //Assert.NotNull(actual);
     }
 
+    [Fact]
+    public void Test_ToString()
+    {
+      var sut = new Customer();
+      sut.ToString();
+    }
 
     /*
         [Theory]

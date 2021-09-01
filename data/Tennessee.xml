@@ -45,4 +45,13 @@
       <Price>20.5</Price>
     </Product>
   </Order>
+  <Order>
+    <Store>
+      <Location>Tennessee</Location>
+    </Store>
+    <Product>
+      <Name>Snickers: </Name>
+      <Price>20.5</Price>
+    </Product>
+  </Order>
 </ArrayOfOrder>

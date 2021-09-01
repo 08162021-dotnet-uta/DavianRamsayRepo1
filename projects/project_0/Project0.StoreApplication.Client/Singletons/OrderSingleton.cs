@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Project0.StoreApplication.Domain.Models;
 using Project0.StoreApplication.Storage.Repositories;
 
@@ -11,7 +12,7 @@ namespace Project0.StoreApplication.Client.Singletons
 
     private static readonly OrderRepository _orderRepository = new OrderRepository();
 
-    //public List<Order> Orders { get; set; }
+    public List<Order> Orders { get; set; }
 
     public static OrderSingleton Instance
     {
