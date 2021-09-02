@@ -86,3 +86,9 @@
 2021-09-01 09:47:20.425 -04:00 [INF] Initiated Run Method
 2021-09-01 09:48:00.276 -04:00 [INF] Initiated Run Method
 2021-09-01 09:49:22.843 -04:00 [INF] Initiated Run Method
+2021-09-01 11:05:56.166 -04:00 [INF] Initiated Run Method
+2021-09-01 11:06:01.637 -04:00 [INF] PrintAllOrders Methods
+2021-09-01 11:06:55.616 -04:00 [INF] Order Confirmed
+2021-09-01 11:24:42.068 -04:00 [INF] Initiated Run Method
+2021-09-01 11:25:01.108 -04:00 [INF] PrintAllOrders Methods
+2021-09-01 11:26:26.269 -04:00 [INF] Order Confirmed

@@ -36,4 +36,22 @@
       <Price>5.5</Price>
     </Product>
   </Order>
+  <Order>
+    <Store>
+      <Location>Calvery</Location>
+    </Store>
+    <Product>
+      <Name>Bags: </Name>
+      <Price>5.5</Price>
+    </Product>
+  </Order>
+  <Order>
+    <Store>
+      <Location>Calvery</Location>
+    </Store>
+    <Product>
+      <Name>Oatmeal: </Name>
+      <Price>10.5</Price>
+    </Product>
+  </Order>
 </ArrayOfOrder>

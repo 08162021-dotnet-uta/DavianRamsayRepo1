@@ -6,6 +6,8 @@ using System;
 using Project0.StoreApplication.Storage.Adapters;
 using Project0.StoreApplication.Storage;
 
+
+
 namespace Project0.StoreApplication.Client
 {
   class Program
@@ -39,6 +41,19 @@ namespace Project0.StoreApplication.Client
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     static void Run()
