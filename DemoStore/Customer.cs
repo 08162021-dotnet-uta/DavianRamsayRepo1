@@ -6,6 +6,8 @@ namespace DemoStore
   internal class Customer
   {
     private string fname;
+    private string lname;
+
     public string Fname
     {
       get
@@ -26,7 +28,23 @@ namespace DemoStore
       }
     }
 
-    public string Lname { get; set; }
+    public string Lname {
+            get
+            {
+                return this.lname;
+            }
+            set 
+            {
+                if (value.Length > 50 || value.Length == 0)
+                {
+                    this.lname = "invalid Name Input";
+                }
+                else 
+                { 
+                    this.fname = value;
+                }
+            }
+         }
 
 
 

@@ -1,3 +1,4 @@
+"Use Strict"
 //alert("this is an alert")
 let response = prompt("this is a prompt", "this is the default");
 console.log(`${response}`);
@@ -141,12 +142,22 @@ else {
 
 let undef;
 console.log(Number(undef));//comes out as NaN
+let nullVal = null;
+let false3 = false;
+noANum = '3d3';
+let emptyString = '';
+let numnum = 0;
+console.log(Number(emptyString));
+console.log(Boolean(Number(numnum)));
 
 
 
 console.log(Math.random() * 10);
-console.log()
+console.log(Math.max(1, 65, 37, 95, 333, 9867, 2));
 
 
-let marksObject = { name: "Mark", age: 42, strength: "weaker everyday" };
-console.log(o)
+let myobj1 = { name: "Mark", age: 42, strength: "weaker everyday" };
+console.log(myobj1);
+console.log(JSON.stringify(myobj1));
+let myobj2 = JSON.stringify(myobj1);
+console.log(JSON.parse(myobj2));
