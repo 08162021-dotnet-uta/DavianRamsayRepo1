@@ -5,16 +5,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="DomDemo.css">
+  <title>DOM Demo</title>
 </head>
 
 <body>
 
   <form class="searchtodos">
+    <label for="searchtodos">filter your tods!</label>
+    <input class="searchterm" type="text" name="searchtodos"></input>
+  </form><br><br>
 
-
-
+  <form class="addtodo">
+    <label for="addtodos">Add another todo to your todos!</label>
+    <input type="text" name="addtodos" focus>
+    <input type="submit" value="Add this Todo">
   </form>
+
+  <div class="todolist">
+
+  </div>
 
 
   <script src="DomDemo.js"></script>
