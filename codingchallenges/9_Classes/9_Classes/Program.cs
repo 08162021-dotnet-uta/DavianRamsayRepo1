@@ -10,18 +10,18 @@ namespace _9_ClassesChallenge
 
 
       //human class with args 
-      string fname;
-      string lname;
+      string fname = "Davian";
+      string lname = "Ramsay";
 
       Human human = new Human(fname, lname);
 
 
       //human class without args 
-      Human human = new Human();
+      Human human1 = new Human();
 
 
       //calling the about me method 
-      human.AboutMe();
+      Console.WriteLine(human.AboutMe());
 
 
 

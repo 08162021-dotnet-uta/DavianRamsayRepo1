@@ -31,7 +31,7 @@ A class is a blueprint for a datatype. In this challenge, you will be
     - Set all four values on the third
 8. Call the Human2.AboutMe2() method on all three new Human2 objects.
 9. Create a new public Human2 Property called Weight using the prop + tab + tab shortcut.
-    - Add validation to the Weight 'Get' method such that a Weight below 0 and a weight above 400 is not allowed.
+    - Add validation to the Weight 'Set' method such that a Weight below 0 and a weight above 400 is not allowed.
     - If an invalid value is inputted to Weight, reset the weight to 0;
 10. Instantiate a Human2:
     - Set the Weight to a valid value.

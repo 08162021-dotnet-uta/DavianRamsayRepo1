@@ -13,7 +13,7 @@ namespace _9_ClassesChallenge
     private int age;
     private int _weight;
 
-    private int Weight
+    public int Weight
     {
       get
       {
@@ -22,12 +22,13 @@ namespace _9_ClassesChallenge
       set
       {
 
-        /////////////////////////////////////////review from here for this challenge--number 9 and 10////////////////////////////////////////////////////////////////
-        if (_weight < 0 && _weight > 400)
+
+        if (value >= 0 && value <= 400)
         {
-          _weight = 0;
+          this._weight = value;
           //Console.WriteLine("Invalid weight");
         }
+        else _weight = 0;
 
       }
     }
@@ -64,7 +65,7 @@ namespace _9_ClassesChallenge
 
     }
     ////number 4 constructor that takes first and last name and age 
-    public Human2(string firstname, string lastname, int age, string eyeColor)
+    public Human2(string firstname, string lastname, string eyeColor, int age)
     {
       this.firstname = firstname;
       this.lastname = lastname;
@@ -80,11 +81,11 @@ namespace _9_ClassesChallenge
     { }
 
 
-    public string AboutMe2()
+    public string AboutMe()
     {
 
 
-      return $"My name is {firstname} {lastname}";
+      return $"My name is {firstname} {lastname}.";
     }
 
 
@@ -97,17 +98,18 @@ namespace _9_ClassesChallenge
     {
       if (eyeColor == null)
       {
-        return $"My name is {firstname} {lastname}. My age is {age}";
+        return $"My name is {firstname} {lastname}. My age is {age}.";
       }
       else if (age == 0)
       {
-        return $"My name is {firstname} {lastname}. My eye color is {eyeColor}";
+        return $"My name is {firstname} {lastname}. My eye color is {eyeColor}.";
       }
       else if (eyeColor == null && age == 0)
       {
-        return $"My name is {firstname} {lastname}";
+        return $"My name is {firstname} {lastname}.";
       }
-      else ($"My name is {firstname} {lastname}.My age is {age}. and eye color is {eyeColor}.");
+      else
+        return $"My name is {firstname} {lastname}. My age is {age}. My eye color is {eyeColor}.";
 
     }
 

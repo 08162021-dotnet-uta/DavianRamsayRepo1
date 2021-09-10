@@ -24,7 +24,7 @@ namespace _9_ClassesChallenge
     {
 
 
-      return $"My name is {firstname} {lastname}";
+      return $"My name is {this.firstname} {this.lastname}.";
     }
 
 
