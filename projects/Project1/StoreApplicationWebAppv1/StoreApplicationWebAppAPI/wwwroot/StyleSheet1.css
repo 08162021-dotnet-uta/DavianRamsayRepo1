@@ -1,0 +1,74 @@
+﻿body
+{
+}
+
+button
+{
+  background-color: blue;
+  color: aliceblue;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+
+}
+
+input[type=text], input[type=password] 
+{
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid;
+  box-sizing: border-box;
+}
+
+label
+{
+  font-weight: bold;
+}
+
+h2
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.MainImg
+{
+  width: 20%;
+ 
+}
+.imgContainer
+{
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+
+
+
+
+
+/*
+Adding styling for the locations page
+*/
+.locationContainerRow
+{
+  display: flex;
+}
+
+.locationContainerColumn
+{
+  flex: 33.33;
+  padding: 70px;;
+}
+
+
+h1
+{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}

@@ -19,4 +19,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DbContext\DbContextWebApp.csproj" />
+    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
+    <ProjectReference Include="..\StoreApplicationWebAppAPI\StoreApplicationWebAppAPI.csproj" />
+    <ProjectReference Include="..\StoreApplicationWebApp\StoreApplicationWebApp.csproj" />
+  </ItemGroup>
+
 </Project>

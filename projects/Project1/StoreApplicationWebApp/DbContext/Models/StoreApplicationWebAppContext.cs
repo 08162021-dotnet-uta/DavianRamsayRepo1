@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ModelsLayer.EfModels;
 
 #nullable disable
 
@@ -26,11 +27,11 @@ namespace DbContextWebApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured) 
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=StoreApplicationWebApp;Trusted_Connection=True;");
-            }
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=StoreApplicationWebApp;Trusted_Connection=True;");
+//            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -70,9 +71,9 @@ namespace DbContextWebApp.Models
 
                 entity.Property(e => e.InventoryId).ValueGeneratedOnAdd();
 
-                entity.HasOne(d => d.Products)
+                entity.HasOne(d => d.Product)
                     .WithMany()
-                    .HasForeignKey(d => d.ProductsId)
+                    .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK__Inventory__Produ__412EB0B6");
 
                 entity.HasOne(d => d.Store)
@@ -88,6 +89,8 @@ namespace DbContextWebApp.Models
                 entity.Property(e => e.OrderDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.TotalCost).HasColumnType("decimal(6, 2)");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)

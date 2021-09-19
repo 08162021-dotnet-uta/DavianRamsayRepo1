@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DbContextWebApp.Models
+namespace ModelsLayer.EfModels
 {
     public partial class OrderProduct
     {

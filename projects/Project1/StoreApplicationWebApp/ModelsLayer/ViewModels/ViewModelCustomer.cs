@@ -1,69 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreApplicationWebApp
+namespace ModelsLayer.ViewModels
 {
-    class ViewModelCustomer
-    {
+	public class ViewModelCustomer
+	{
         private string fname;
         private string lname;
-        public string Fname {
-           
-         //setters and getters with constraints for input validation    
+       
+        public string Fname
+        {
             get
             {
                 return this.fname;
             }
-
-
-            set
-            {
-                if (value.Length > 50 || value.Length == 0)
-                    {
-                    this.fname = "Invalid First Name format";
-                }
-
-            }    
-        
-        }
-
-        public string Lname {
-            get
-            {
-                return this.lname;
-            }
-
-
-
             set
             {
                 if (value.Length > 50 || value.Length == 0)
                 {
-                    this.lname = "Invalid Last Name format";
+                    this.fname = "invalid First Name Input";
                 }
-            
-            }    
-        
+                else
+                {
+                    this.fname = value;
+                }
+            }
         }
-
-
-        //Constructor created that takes a first name and last name
+        public string Lname
+        {
+            get
+            {
+                return this.lname;
+            }
+            set
+            {
+                if (value.Length > 50 || value.Length == 0)
+                {
+                    this.lname = "invalid Last Name Input";
+                }
+                else
+                {
+                    this.lname = value;
+                }
+            }
+        }
+       
+        
+        public ViewModelCustomer() { }
         public ViewModelCustomer(string fname, string lname)
         {
             this.Fname = fname;
             this.Lname = lname;
+            
         
-        }
-
-
-        //default constructor explicitely created due to the parameterized one created above 
-
-        public ViewModelCustomer()
-        { }
-
-
-    }//end of class
-}//end of namespace 
+    }
+}//EOC
+}//EON

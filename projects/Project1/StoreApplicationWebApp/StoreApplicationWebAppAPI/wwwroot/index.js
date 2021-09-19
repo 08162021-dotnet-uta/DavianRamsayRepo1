@@ -1,25 +1,25 @@
-// JavaScript source code
-const button = document.querySelector('.weatherlist');
-const listofcustomers = document.querySelector('.listofcustomers');
+﻿const logform = document.querySelector('#loginForm');
 
+logform.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fname = logform.fname.value;
+    const lname = logform.lname.value;
 
-button.addEventListener('click', (e) => {
-    fetch('WeatherForecast')
+    fetch(`/login/${fname}/${lname}`)
         .then(res => {
             if (!res.ok) {
-                console.log('NOT OK')
+                console.log(`username: ${fname} password: ${lname}`);
+                console.log('unable to login the user');
                 throw new Error(`Network response was not ok (${res.status})`);
             }
-            else {
-                return res.json();
-            }
+            return res.json();
         })
         .then(res => {
-			console.log(res);
-			//res.foreach(x => listofcustomers.innerHTML += x)
-			for (let x = 0; x < res.length; x++) {
-				listofcustomers.innerText += `The temp is ${res[x].temperatureC}.\nThe weather is ${res[x].summary}.\n`
-			}
-		})
+            console.log(res);
+            sessionStorage.setItem('user', JSON.stringify(res));
+            console.log(sessionStorage.getItem('user'));
+            //sessionStorage.clear();
+            location.href = "locationEmpty.html";
+        })
         .catch(err => console.log(`There was an error ${err}`));
 });
