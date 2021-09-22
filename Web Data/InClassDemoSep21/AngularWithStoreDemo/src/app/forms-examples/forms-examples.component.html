@@ -1,0 +1,151 @@
+<!-- <p>forms-examples works!</p>
+<form (submit)="submitReactiveForm()" [formGroup]="reactiveformexample">
+
+  <label for="fname">FirstName</label>
+  <input type="text" name="fname" id="fname" formControlName="fname">
+  <br> -->
+
+
+
+
+
+<!-- ::::::::::::::::COMMENTED OUT INITIALLY all other commented out data works ::::::::::::::
+    :::::::::::::This is another was to add the different types of validation to forms like prestine other way is to create 
+    
+    a getter method in the .ts file and call it from here 
+    <div *ngIf="this.reactiveformexample.get('fname')?.pristine">
+    <h6>This value is prestine</h6>
+  </div>
+
+  <div *ngIf="this.reactiveformexample.get('fname')?.touched">
+    <h6>This value is touched</h6>
+  </div>
+
+  <div *ngIf="this.reactiveformexample.get('fname')?.invalid">
+    <h6>This value is invalid</h6>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ::::::::::::INFORMTIONAL COMMENT:::::::
+    getter method was created in the .ts file called (get fname) to control these functions to show when a field is valid or invalid or touched etc, this can
+  be found in the angular formValidator pdfs  -->
+<!-- 
+  <div *ngIf="fname?.touched">
+    <h6>This value is touched</h6>
+  </div>
+
+  <div *ngIf="fname?.pristine">
+    <h6>This value is prestine</h6>
+  </div>
+
+  <div *ngIf="fname?.invalid">
+    <h6>This value is invalid</h6>
+  </div>
+
+  <div *ngIf="fname?.valid">
+    <h6>This value is valid</h6>
+  </div>
+
+
+
+
+
+  <label for="lname">LastName</label>
+  <input type="text" name="lname" formControlName="lname">
+  <br>
+  <label for="email">Email</label>
+  <input type="email" name="email" formControlName="email">
+  <br>
+  <label for="phonenumber">PhoneNumber</label>
+  <input type="tel" name="phonenumber" formControlName="phonenumber">
+  <br>
+  <label for="username">UserName</label>
+  <input type="text" name="username" formControlName="username">
+  <br>
+  <label for="password">Password</label>
+  <input type="password" name="password" formControlName="password">
+  <br>
+  <button type="submit">submit the reactive form</button>
+
+</form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form (submit)="submitTemplateForm()">
+
+  <label for="fname2">FirstName</label>
+  <input class="template-validation" type="text" [(ngModel)]="fname2" required #fname22="ngModel" pattern="[a-zA-Z ]*"
+    [ngModelOptions]="{standalone: true}" minlength="3" maxlength="10">
+  <br>
+
+  <div *ngIf="fname22?.pristine">
+    <h6>This value is prestine</h6>
+  </div>
+
+  <div *ngIf="fname22?.touched">
+    <h6>This value is touched</h6>
+  </div>
+
+
+  <div *ngIf="fname22?.invalid">
+    <h6>This value is invalid</h6>
+  </div>
+
+  <div *ngIf="fname22?.valid">
+    <h6>This value is valid</h6>
+  </div>
+
+
+
+
+
+  <label for="lname2">LastName</label>
+  <input class="template-validation" type="text" name="lname2" [(ngModel)]="lname2" required
+    [ngModelOptions]="{standalone: true}">
+  <br>
+  <label for="email2">Email</label>
+  <input class="template-validation" type="email" name="email2" [(ngModel)]="email2" required
+    [ngModelOptions]="{standalone: true}">
+  <br>
+  <label for="phonenumber2">PhoneNumber</label>
+  <input class="template-validation" type="tel" name="phonenumber2" [(ngModel)]="phonenumber2" required required
+    [ngModelOptions]="{standalone: true}">
+  <br>
+  <label for="username2">UserName</label>
+  <input class="template-validation" type="text" name="username2" [(ngModel)]="username2" required pattern="[a-zA-Z ]*"
+    [ngModelOptions]="{standalone: true}">
+  <br>
+  <label for="password2">Password</label>
+  <input class="template-validation" type="password" name="password2" [(ngModel)]="password2" required
+    [ngModelOptions]="{standalone: true}">
+  <br>
+  <button type="submit">submit the reactive form</button>
+
+</form>

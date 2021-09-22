@@ -9,6 +9,7 @@
 
 <button (click)="logincustomer()" routerLink="/login" type="submit">Click me to login</button>
 <button (click)="registercustomer()" routerLink="/register" type="submit">Click me to register</button>
+<button routerLink="/exampleforms">Click to see forms </button>
 <router-outlet></router-outlet>
 
 <app-register-customer [registertrue]="registertrue" (passNewCustomerToParent)="registernewcustomer($event)">
