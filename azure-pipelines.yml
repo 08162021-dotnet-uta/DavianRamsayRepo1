@@ -1,66 +1,40 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
-  branches:
-    include:
-      - main
-  paths:
-    include:
-      -DavianRamsayRepo1/projects/Project1/StoreApplicationWebApp_finalPresent
-
+- main
 
 pool:
-  vmImage: ubuntu-latest
-  
+  vmImage: 'windows-latest'
+
 variables:
-  pathtoproj: variable1
-  pathToSln: DavianRamsayRepo1/projects/Project1/StoreApplicationWebApp_finalPresent/StoreApplicationWebApp.sln
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-stages:
-  -stage: Build
-  Jobs:
-    Job: buildJob
-      steps:
-      #this step may not be needed 
-      # - task: DotNetCoreCLI@2
-      #   displayName: 'install .NET 5'
-      #   inputs:
-      #     packageType: 'sdk'
-      #       version: '5.0.x'
-      # - task: NuGetToolInstaller@1
-
-        -task: NuGetToolInstaller@1
-
-        task: NugetCommand@2
-        inputs:
-        #maybe not needed?
-        command: 'restore'
-        restoresolution: '$(pathtoSln)'
-      # stage:Sonarcloud
-      # -job: sonarcloud
-      #   steps:
-  -stage: Publish 
-    jobs:
-      -job:publish
-        steps:
-         - task: DotNetCoreCLI@2
-          displayName: Publishing
-            inputs:
-              command: 'publish'
-              publishWebProjects: true
-              project:$(pathToSln)
-              zipafterPublish: true
-
-
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: NuGetToolInstaller@1
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
