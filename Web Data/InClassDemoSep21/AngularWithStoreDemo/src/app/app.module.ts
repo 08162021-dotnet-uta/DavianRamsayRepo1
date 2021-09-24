@@ -7,19 +7,27 @@ import { LoginCustomerComponent } from './login-customer/login-customer.componen
 import { RegisterCustomerComponent } from './register-customer/register-customer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsExamplesComponent } from './forms-examples/forms-examples.component';
+import { CustomerlistComponent } from './customerlist/customerlist.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerdetailsComponent } from './customerdetails/customerdetails.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginCustomerComponent,
     RegisterCustomerComponent,
-    FormsExamplesComponent
+    FormsExamplesComponent,
+    CustomerlistComponent,
+    CustomerdetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

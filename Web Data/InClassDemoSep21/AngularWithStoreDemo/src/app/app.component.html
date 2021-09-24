@@ -7,9 +7,12 @@
 <!-- <button (click)="logincustomer()" type="submit">Click me to login</button>
 <button (click)="registercustomer()" type="submit">Click me to register</button> -->
 
-<button (click)="logincustomer()" routerLink="/login" type="submit">Click me to login</button>
-<button (click)="registercustomer()" routerLink="/register" type="submit">Click me to register</button>
-<button routerLink="/exampleforms">Click to see forms </button>
+<button (click)="logincustomer()" routerLink="/login" type="submit">Click me to login</button><br>
+<button (click)="registercustomer()" routerLink="/register" type="submit">Click me to register</button><br>
+<button routerLink="/exampleforms">Click to see forms </button><br>
+<button routerLink="/customerlist">Click to see all customers </button><br>
+
+
 <router-outlet></router-outlet>
 
 <app-register-customer [registertrue]="registertrue" (passNewCustomerToParent)="registernewcustomer($event)">

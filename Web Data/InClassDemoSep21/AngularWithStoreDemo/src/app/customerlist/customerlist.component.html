@@ -1,0 +1,13 @@
+<p>customerlist works!</p>
+
+<ul>
+  <li *ngFor="let cust of customerlist">
+    <h3 (click="customerdetails(cust.customerId)" )>
+      {{cust.customerId}} {{cust.fname}} {{cust.lname}}
+    </h3>
+  </li>
+</ul>
+<!--add a button to add a new customer -->
+<app-register-customer (passNewCustomerToParent)="registernewcustomer($event)"></app-register-customer>
+<!--below will be the component to display th user when selected -->
+<app-customerdetails [selectedCustomer]="selectedCustomer"></app-customerdetails>
