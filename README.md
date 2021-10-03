@@ -1,6 +1,6 @@
 # Davian Ramsay
 
-## creator
+## Developer
 
 # PROJECTS
 
