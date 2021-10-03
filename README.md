@@ -1,37 +1,49 @@
-# davian
+# Davian Ramsay
 
 ## creator
 
-# PROJECT NAME
+# PROJECTS
 
 ## Project Description
+Project 1
+* https://github.com/08162021-dotnet-uta/DavianRamsayRepo1/tree/main/projects/Project1/StoreApplicationWebApp_final%20present
 
 Here goes your awesome project description!
 ## Technologies Used
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* C#
+* ASP.NET
+* HMLT
+* JavaScript
+* CSS
+* SQL
+
+
+
 ## Features
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Users are able to log in to the website 
+* Users are able to see a list of store locations to choose from 
+* Used session storage have username to be used on all screens
+
+
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* A list of products to be added for each stores for users to purchase form
+
 ## Getting Started
    
-(include git clone command)
-(include all environment setup steps)
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-- All the `code` required to get started
-- Images of what it should look like
-## Usage
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+## git clone command
+ git clone 
+* https://github.com/08162021-dotnet-uta/DavianRamsayRepo1.git
 
-## Contributors
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
+
+-
+## Usage
+* Clone the account onto local machine.
+* Launch the soluton file in Visual Studio or Visual Studio Code and run the program.
+* Ensure the API folder is your startup folder. 
+* Site should be launched at a local host
+
+##
 
 
 
