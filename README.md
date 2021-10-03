@@ -20,7 +20,7 @@ Here goes your awesome project description!
 
 
 ## Features
-List of features ready and TODOs for future development
+
 * Users are able to log in to the website 
 * Users are able to see a list of store locations to choose from 
 * Used session storage have username to be used on all screens
@@ -28,6 +28,8 @@ List of features ready and TODOs for future development
 
 To-do list:
 * A list of products to be added for each stores for users to purchase form
+* Add cart functionality for items to be added to cart
+* add payment functionality for users to make purchase and checkout from cart 
 
 ## Getting Started
    
