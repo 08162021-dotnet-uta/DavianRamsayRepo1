@@ -8,7 +8,7 @@
 Project 1
 * https://github.com/08162021-dotnet-uta/DavianRamsayRepo1/tree/main/projects/Project1/StoreApplicationWebApp_final%20present
 
-Here goes your awesome project description!
+
 ## Technologies Used
 * C#
 * ASP.NET
