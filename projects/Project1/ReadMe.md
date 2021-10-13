@@ -5,6 +5,10 @@
 # PROJECTS
 
 ## Project Description
+This is a ASP.NET Core API project utilizing Entity Framework Core, a SQL Database, and JavaScript front-end to create a Web Store Application that allows a user to create an account, view orders by user and store location, create an order, and view their order history.
+
+
+
 Project 1
 * https://github.com/08162021-dotnet-uta/DavianRamsayRepo1/tree/main/projects/Project1/StoreApplicationWebApp_final%20present
 
